@@ -2,20 +2,23 @@ package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
 import java.util.Objects;
 
+// Tras varias versiones de la aplicación me he cansado de tener el aviso por no usar al ER y he decidido usarlas de aqui en adelante
+
 public class Profesor {
 
 	private static final String ER_TELEFONO = "\\d{9}";
-	private static final String ER_CORREO = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	
+	private static final String ER_CORREO = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
 	private String nombre;
 	private String correo;
 	private String telefono;
-	
-	public Profesor (String nombre, String correo) {
+
+	public Profesor(String nombre, String correo) {
 		setNombre(nombre);
 		setCorreo(correo);
 	}
-	
+
 	public Profesor(String nombre, String correo, String telefono) {
 		if (telefono == null) {
 			setNombre(nombre);
@@ -26,9 +29,9 @@ public class Profesor {
 			setTelefono(telefono);
 		}
 	}
-	
+
 	public Profesor(Profesor profesor) {
-		if(profesor == null)
+		if (profesor == null)
 			throw new NullPointerException("ERROR: No se puede copiar un profesor nulo.");
 		setNombre(profesor.getNombre());
 		setCorreo(profesor.getCorreo());
@@ -40,13 +43,13 @@ public class Profesor {
 	}
 
 	private void setNombre(String nombre) {
-		if(nombre == null) 
+		if (nombre == null)
 			throw new NullPointerException("ERROR: El nombre del profesor no puede ser nulo.");
-		if(nombre == "")
+		if (nombre == "")
 			throw new IllegalArgumentException("ERROR: El nombre del profesor no puede estar vacío.");
 		this.nombre = formateaNombre(nombre);
 	}
-	
+
 	private String formateaNombre(String nombre) {
 		String nuevoNombre;
 		nombre.trim();
@@ -75,10 +78,13 @@ public class Profesor {
 	}
 
 	public void setCorreo(String correo) {
-		if(correo == null)
+		if (correo == null)
 			throw new NullPointerException("ERROR: El correo del profesor no puede ser nulo.");
-		if(correo == "")
+		// Cambiamos el if para que si correo esta vacio o compuesto de espacios en blanco salte el error.
+		if (correo.trim().isEmpty())
 			throw new IllegalArgumentException("ERROR: El correo del profesor no es válido.");
+		if (!correo.matches(ER_CORREO))
+			throw new IllegalArgumentException("ERROR: El formato del correo no es válido");
 		this.correo = correo;
 	}
 
@@ -87,9 +93,15 @@ public class Profesor {
 	}
 
 	public void setTelefono(String telefono) {
-		if(telefono == "")
+		if (telefono.trim().isEmpty())
 			throw new IllegalArgumentException("ERROR: El teléfono del profesor no es válido.");
+		if (!telefono.matches(ER_TELEFONO))
+			throw new IllegalArgumentException("ERROR: El formato del telefono no es válido.");
 		this.telefono = telefono;
+	}
+	
+	public Profesor getProfesorFicticio(String correo) {
+		return new Profesor("Jose Ficticio", correo);
 	}
 
 	@Override
@@ -106,15 +118,15 @@ public class Profesor {
 		if (getClass() != obj.getClass())
 			return false;
 		Profesor other = (Profesor) obj;
-		return Objects.equals(nombre, other.nombre);
+		return Objects.equals(correo, other.correo);
 	}
+
 	@Override
 	public String toString() {
-		if(telefono == null)
+		if (telefono == null)
 			return "nombre=" + getNombre() + ", correo=" + getCorreo();
 		else
 			return "nombre=" + getNombre() + ", correo=" + getCorreo() + ", telefono=" + getTelefono();
 	}
-	
-	
+
 }

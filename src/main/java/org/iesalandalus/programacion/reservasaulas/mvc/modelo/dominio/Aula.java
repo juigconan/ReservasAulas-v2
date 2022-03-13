@@ -48,7 +48,7 @@ public class Aula {
 	}
 	
 	public Aula getAulaFicticia(String nombre) {
-		return new Aula(nombre, 1);
+		return new Aula(nombre, 10);
 	}
 	
 	@Override
