@@ -45,7 +45,7 @@ public class Profesor {
 	private void setNombre(String nombre) {
 		if (nombre == null)
 			throw new NullPointerException("ERROR: El nombre del profesor no puede ser nulo.");
-		if (nombre == "")
+		if (nombre.trim().isEmpty())
 			throw new IllegalArgumentException("ERROR: El nombre del profesor no puede estar vacío.");
 		this.nombre = formateaNombre(nombre);
 	}
@@ -81,10 +81,10 @@ public class Profesor {
 		if (correo == null)
 			throw new NullPointerException("ERROR: El correo del profesor no puede ser nulo.");
 		// Cambiamos el if para que si correo esta vacio o compuesto de espacios en blanco salte el error.
-		if (correo.trim().isEmpty())
+		if (correo.isBlank())
 			throw new IllegalArgumentException("ERROR: El correo del profesor no es válido.");
 		if (!correo.matches(ER_CORREO))
-			throw new IllegalArgumentException("ERROR: El formato del correo no es válido");
+			throw new IllegalArgumentException("ERROR: El correo del profesor no es válido.");
 		this.correo = correo;
 	}
 
@@ -93,14 +93,14 @@ public class Profesor {
 	}
 
 	public void setTelefono(String telefono) {
-		if (telefono.trim().isEmpty())
+		if (telefono.isBlank())
 			throw new IllegalArgumentException("ERROR: El teléfono del profesor no es válido.");
 		if (!telefono.matches(ER_TELEFONO))
-			throw new IllegalArgumentException("ERROR: El formato del telefono no es válido.");
+			throw new IllegalArgumentException("ERROR: El teléfono del profesor no es válido.");
 		this.telefono = telefono;
 	}
 	
-	public Profesor getProfesorFicticio(String correo) {
+	public static Profesor getProfesorFicticio(String correo) {
 		return new Profesor("Jose Ficticio", correo);
 	}
 
@@ -126,7 +126,7 @@ public class Profesor {
 		if (telefono == null)
 			return "nombre=" + getNombre() + ", correo=" + getCorreo();
 		else
-			return "nombre=" + getNombre() + ", correo=" + getCorreo() + ", telefono=" + getTelefono();
+			return "nombre=" + getNombre() + ", correo=" + getCorreo() + ", teléfono=" + getTelefono();
 	}
 
 }

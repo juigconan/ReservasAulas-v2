@@ -47,7 +47,7 @@ public class Aula {
 		return getPuestos()*PUNTOS_POR_PUESTO;
 	}
 	
-	public Aula getAulaFicticia(String nombre) {
+	public static Aula getAulaFicticia(String nombre) {
 		return new Aula(nombre, 10);
 	}
 	
