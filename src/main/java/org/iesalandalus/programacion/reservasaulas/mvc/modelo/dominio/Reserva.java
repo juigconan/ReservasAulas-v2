@@ -51,6 +51,10 @@ public class Reserva {
 	public void setPermanencia(Permanencia permanencia) {
 		this.permanencia = permanencia;
 	}
+	
+	public static Reserva getReservaFicticia(Permanencia permanencia, Aula aula) {
+		return new Reserva(Profesor.getProfesorFicticio("correo@ficticio.com"),aula,permanencia);
+	}
 
 	@Override
 	public int hashCode() {
