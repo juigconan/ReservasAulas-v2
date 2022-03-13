@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Permanencia {
+public abstract class Permanencia {
 
 	private LocalDate dia;
 	private static final DateTimeFormatter FORMATO_DIA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -41,6 +41,8 @@ public class Permanencia {
 			throw new NullPointerException("ERROR: El tramo de una permanencia no puede ser nulo.");
 		this.tramo = tramo;
 	}
+	
+	public abstract int getPuntos();
 
 	@Override
 	public String toString() {
@@ -48,21 +50,10 @@ public class Permanencia {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(dia, tramo);
-	}
+	public abstract int hashCode();
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Permanencia other = (Permanencia) obj;
-		return Objects.equals(dia, other.dia) && tramo == other.tramo;
-	}
+	public abstract boolean equals(Object obj);
 
 
 }
