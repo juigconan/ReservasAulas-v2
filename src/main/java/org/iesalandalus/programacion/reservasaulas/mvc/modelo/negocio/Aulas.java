@@ -2,10 +2,7 @@ package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.naming.OperationNotSupportedException;
-
-import org.apache.commons.math3.exception.NullArgumentException;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 
 public class Aulas {
