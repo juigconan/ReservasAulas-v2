@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio;
+package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.memoria;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 
 public class Aulas {
 
+	private static final float MAX_PUNTOS_PROFESOR_MES = 200;
 	private List<Aula> listaAulas;
 
 	public Aulas() {

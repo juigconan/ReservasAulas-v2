@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio;
+package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.memoria;
 
 import java.util.ArrayList;
 import java.util.List;

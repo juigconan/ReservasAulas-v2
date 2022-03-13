@@ -60,11 +60,11 @@ public class Reserva {
 	public int hashCode() {
 		return Objects.hash(aula, permanencia, profesor);
 	}
-	/*
+	
 	public float getPuntos(){
 		return aula.getPuntos()+permanencia.getPuntos();
 	}
-*/
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio;
+package org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.memoria;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,12 @@ import java.util.List;
 import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservasaulas.mvc.modelo.negocio.IReservas;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanencia;
 
-public class Reservas {
+public class Reservas  implements IReservas{
 
 	private List<Reserva> listaReservas;
 
